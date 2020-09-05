@@ -1,10 +1,51 @@
 {% extends 'base.html' %}
 
 {% block head %}
-
+<title>Task Manager | VoMan</title>
 {% endblock %}
 
 {% block body %}
-<h1>Template</h1>
+<main class="content">
+  <section class="container">
+    <div class="row">
+      <h1>Task Manager</h1>
+      <div>
+        <table class="table table-hover table-bordered table-sm">
+          <caption>List of Tasks <small>Last update: Sept 5th 2020 18:15 GMT+1</small></caption>
+
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Task</th>
+              <th scope="col">Added</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for task in tasks %}
+            <tr>
+              <td scope="row">{{ task.content }}</td>
+              <td>{{ task.date_created.date() }}</td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-outline-primary btn-lg">Edit</button>
+                  <button type="button" class="btn btn-outline-success btn-lg">Complete</button>
+                  <button type="button" class="btn btn-outline-danger btn-lg">Delete</button>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <form action="/" method="POST" class="form">
+      <input type="text" name="content" id="content">
+      <input type="submit" value="Add Task">
+    </form>
+  </section>
+
+</main>
 
 {% endblock %}
