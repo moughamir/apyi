@@ -28,9 +28,13 @@
               <td>{{ task.date_created.date() }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-outline-primary btn-lg">Edit</button>
+                  <button type="button" class="btn btn-outline-primary btn-lg">
+                    Edit
+                  </button>
                   <button type="button" class="btn btn-outline-success btn-lg">Complete</button>
-                  <button type="button" class="btn btn-outline-danger btn-lg">Delete</button>
+                  <button type="button" class="btn btn-outline-danger btn-lg">
+                    <a href="/del/{{task.id}}">Delete</a>
+                  </button>
                 </div>
               </td>
             </tr>

@@ -35,6 +35,18 @@ def index():
     tasks = Todo.query.order_by(Todo.date_created).all()
     return render_template('index.html', tasks=tasks)
 
+
+@app.route('/del/<int:id>')
+def delTask(id):
+  task_to_delete = Todo.query.get_or_404(id)
+
+  try:
+    db.session.delete(task_to_delete)
+    db.session.commit()
+    return redirect('/')
+  except:
+    return "Facing an obstacle while trying to delete a task"
+
 # Runner
 if __name__ == "__main__":
   app.run(debug=True)
